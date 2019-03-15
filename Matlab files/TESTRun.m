@@ -17,14 +17,14 @@ rng(1) % random number generator seed to repeat the same scenarios
 AllParam = ParameterFile; % All the parameters are put in a main struct AllParam
 
 %% Modify the Parameters
-AllParam.RRTParam.plotBranches = 1; %0/1 plot the branches
-AllParam.RRTParam.iterMax = 10000; % maximum number of iterations
+AllParam.RRTParam.plotBranches = 0; %0/1 plot the branches
+AllParam.RRTParam.iterMax = 5000; % maximum number of iterations
 % and the other parameters can be modified as above
 
 %% Run Main Function 
 tic % start timer to time how long it takes to finish iterations
 
-[MultiplePaths,AllTrees,figHandle] = Multi_T_RRTstar(AllParam);
+[MultiplePaths,AllTrees,AllParam] = Multi_T_RRTstar(AllParam);
 
 toc % stop timer to print elapsed time
 
@@ -37,8 +37,8 @@ NodeIDsuccesses = AllTrees.NodeIDsuccesses;
 if (isempty(NodeIDsuccesses))
     fprintf('Goal was not reached! Try changing parameters \n');
 else
-    set(figHandle.FinalPath(end),'visible','on','Color','r','LineStyle','-','LineWidth',2.5)
-    set(figHandle.FinalPath(1:end-1),'visible','on','Color','b','LineStyle','--','LineWidth',0.5)
+    set(AllParam.figHandle.FinalPath(end),'visible','on','Color','r','LineStyle','-','LineWidth',2.5)
+    set(AllParam.figHandle.FinalPath(1:end-1),'visible','on','Color','b','LineStyle','--','LineWidth',0.5)
     title('\bf RRT Generated Path - Top View')  
 end
 
