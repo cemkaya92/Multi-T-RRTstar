@@ -14,32 +14,43 @@ start and goal locations. Algorithm runs until the maximum iteration
 number is reached, then, outputs all the successful connections of trees 
 selecting the Final Path with highest utility. 
  
- *Features:*
+ Features:
+ 
      - Multiple Trees  (1 Forward and multiple Backward Trees)
+     
      - Heruistics: Goal Bias and Transition Test (rejection sampling)
+     
      - Obstacle Avoidance (polygonal obstacles with circular avoid radii)
+     
      - Utility Maximization. 
        (min UAS impact risk/max UAS operation utility)
 
-*To Do List:*
+To Do List:
+
      - Faster Near and Nearest search are needed.
        (current implementation of KDTrees are slow - the bottleneck)
+       
      - Adaptive Sampling Heuristics instead of uniform sampling
+     
      - Transition Test requires a fine initial tuning. There should be 
        a way of making it more generic.
+       
      - Object Oriented Programming can be more efficient and cleaner
        (passing all the parameters into many funtions are unnecessary and
        inefficient even though they are under a main struct)
+       
      - Potential places that requires optimization of the method and code:
+     
             \Utility Calculation: Large matrix operations PREM and PURM
+	    
             \Rewiring: unsorted rewire trials may exp. increase
 
 *Usage:* Use TESTRun.m script to load and pass the required parameters 
          that are defined in ParameterFile.m.
          Check ParameterFile.m for details of individual parameters.
-	     Load the Parameters for the Path Planning to pass the RRT
-	     algorithm. Dot (.) notation of the struct can be used here to
-     modify the desired parameters. Note that this sample run
+	 Load the Parameters for the Path Planning to pass the RRT
+	 algorithm. Dot (.) notation of the struct can be used here to
+     	 modify the desired parameters. Note that this sample run
 is using a specific scenario map with building footprints. To generate
 different scenario maps, new footprint.shp file are required from GIS database
 and buildingFootprints_GIS.m file needs to be updated accordingly.
@@ -55,7 +66,8 @@ categories and the short description is below. At the end of the file,
 all the parameters are put under a main struct (AllParam) for the 
 accessability. For more detail, check the comments on the individual parameters.
 
-\Categories:
+Categories:
+
       - RRTParam:
                   (RRT specific and planning parameters are grouped 
                   together. i.e. Step Size, maximum iteration, display 
